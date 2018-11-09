@@ -26,7 +26,8 @@ const redirect = (req, res) => {
             } else {
                 const { access_token, team_id } = JSON.parse(body);
                 authorizations[team_id] = access_token;
-                res.json(body);
+                console.log('oAuth Successful', body);
+                res.send('oAuth Successful');
             }
         })
     }
