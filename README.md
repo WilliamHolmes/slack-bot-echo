@@ -1,2 +1,2 @@
 # slack-bot-echo
-Slack Bot to Echo and test features messages
+Slack Bot to echo messages and test Slack messages features
