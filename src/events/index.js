@@ -4,6 +4,6 @@ const messageEvent = require('./message');
 
 module.exports = {
     errorEvent,
-    link,
+    linkEvent,
     messageEvent
 }
