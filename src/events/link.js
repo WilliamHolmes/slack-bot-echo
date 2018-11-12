@@ -12,24 +12,24 @@ const message = (...args) => {
     return{ ...meta, url };
   });
   return Q.all(promises).then(data => {
-    _.each(data, site => {
-      console.log('TCL: message -> site', site);
-      const { title, description, image, url } = site;
-      const unfurls = {
-        [url]: {
-          title,
-          title_link: image,
-          image_url: image,
-          fields: [{
-            title: 'Description',
-            value: description
-          }]
-        }
-      }
-      web.chat.unfurl({ channel, ts, unfurls }).then(slackResponse => {
-        console.log(`Message sent: ${slackResponse.ts}`);
-      }).catch(console.error);
-    });
+    const unfurls = _.chain(data)
+      .map(({ title, description, image, url }) => ({
+        url,
+        title,
+        title_link: image,
+        image_url: image,
+        fields: [{
+          title: 'Description',
+          value: description
+        }]
+      }))
+      .indexBy('url')
+      .value();
+
+    web.chat.unfurl({ channel, ts, unfurls }).then(slackResponse => {
+      console.log(`Message sent: ${slackResponse.ts}`);
+    }).catch(console.error);
+
   });
 };
 
