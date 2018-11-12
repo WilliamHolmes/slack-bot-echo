@@ -77,16 +77,30 @@ const commands = (req, res) => {
                         "attachment_type": "default",
                         "actions": [
                             {
-                                "name": "recommend",
-                                "text": "Recommend",
-                                "type": "button",
-                                "value": "recommend"
+                                "name": "decision",
+                                "value": "orbit",
+                                "style": "primary",
+                                "text": "Orbit",
+                                "type": "button"
                             },
                             {
-                                "name": "no",
-                                "text": "No",
+                                "name": "decision",
+                                "value": "land",
+                                "text": "Attempt to land",
+                                "type": "button"
+                            },
+                            {
+                                "name": "decision",
+                                "value": "self_destruct",
+                                "text": "Self destruct",
                                 "type": "button",
-                                "value": "bad"
+                                "style": "danger",
+                                "confirm": {
+                                    "title": "Are you sure you want to self destruct?",
+                                    "text": "Maybe you should attempt to land instead. You might crash.",
+                                    "ok_text": "Yes, self destruct",
+                                    "dismiss_text": "No thanks"
+                                }
                             }
                         ]
                     }

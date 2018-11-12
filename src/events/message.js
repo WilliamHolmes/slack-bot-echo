@@ -1,3 +1,5 @@
+const _ = require('underscore');
+
 const web = require('../webClient');
 
 const message = (...args) => {
