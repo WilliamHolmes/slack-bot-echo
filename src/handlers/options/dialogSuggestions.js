@@ -1,4 +1,4 @@
-const dialogSuggestions = () => {
+const dialogSuggestions = (req, res) => {
     return res.send({
         "option_groups": [
         {
