@@ -1,4 +1,5 @@
 const queryStrings = require('query-string');
+const _ = require('underscore');
 
 const web = require('../../webClient');
 
@@ -231,8 +232,25 @@ const commands = (req, res) => {
             })
             break;
         }
+        case 'footer': {
+            res.send({
+                text: 'Here is *MAIN* message some text that appears above an attachment',
+                attachments: [{
+                    "author_name": "William Holmes",
+                    "author_link": "https://workspace-slack-test.slack.com/messages/DDYC9EDN2/team/UDW87UF6U/",
+                    "author_icon": "https://ca.slack-edge.com/TDY214B3R-UDW87UF6U-932c98831585-72",
+                    "title": "App Code Repo",
+                    "title_link": "https://glitch.com/edit/#!/husky-pendulum",
+                    "text": "Optional text that appears within the attachment",
+                    "footer": "Our Test APP",
+                    "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
+                    "ts": (_.now() / 1000)
+                }]
+            })
+            break;
+        }
         default: {
-            res.send(`You can use the slash command followed by *image*, *fields*, *private*, *text*, *buttons*, *dialog*, *select*, or *menu*`)
+            res.send(`You can use the slash command followed by *image*, *fields*, *private*, *text*, *buttons*, *dialog*, *select*, *footer*, or *menu*`)
         }
     }
 }
