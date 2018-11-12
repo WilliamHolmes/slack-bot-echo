@@ -35,6 +35,7 @@
     "express": "^4.16.4",
     "grabity": "^1.0.4",
     "node-fetch": "^2.2.1",
+    "q": "^1.5.1",
     "query-string": "^6.2.0",
     "request": "^2.88.0",
     "slackbots": "^1.2.0",

@@ -12,9 +12,11 @@ const message = (...args) => {
 
   console.log('MESSAGE Event', args);
 
-  web.chat.postMessage({ channel, text }).then(slackResponse => {
+  if (_.isEqual(text, 'echo')) {
+    web.chat.postMessage({ channel, text }).then(slackResponse => {
       console.log('Message sent: ' + slackResponse.ts);
-  }).catch(console.error);
+    }).catch(console.error);
+  }
   };
 
   module.exports = message;
