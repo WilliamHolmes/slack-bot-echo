@@ -8,6 +8,7 @@ const message = (...args) => {
   const [{ links = [] }] = args;
   console.log(`Links ${JSON.stringify(links)}`);
   const attachments = _.map(links, ({ url }) => {
+    console.log('get url', url);
     return (async () => {
       const data = await grabity.grabIt(url);
       console.log('TCL: message -> data', data);
