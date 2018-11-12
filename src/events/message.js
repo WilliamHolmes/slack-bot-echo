@@ -1,7 +1,8 @@
 const web = require('../webClient');
 
-const message = ({ user, channel, text, subtype, files = [] }, { team_id }) => {
-    console.log(`Received a message event: user ${user} in team ${team_id} in channel ${channel} says ${text} with files ${JSON.stringify(files, null, 2)}`);
+const message = (...args) => {
+  console.log('MESSAGE Event', args);
+  const [{ user, channel, text, subtype, files = [] }] = args;
 
     if (!user || subtype) {
       return;

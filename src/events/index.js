@@ -1,5 +1,5 @@
 const errorEvent = require('./error');
-const link = require('./link');
+const linkEvent = require('./link');
 const messageEvent = require('./message');
 
 module.exports = {
