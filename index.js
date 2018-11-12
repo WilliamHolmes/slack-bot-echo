@@ -9,7 +9,7 @@ const { createEventAdapter } = require('@slack/events-api');
 const constants = require('./src/constants');
 
 const { authRedirectHandler } = require('./src/auth');
-const { errorEvent, messageEvent } = require('./src/events');
+const { errorEvent, linkEvent, messageEvent } = require('./src/events');
 const { actionsHandler, optionsHandler, commandsHandler } = require('./src/handlers');
 const { verifySignatureMiddleware } = require('./src/middleware');
 
@@ -49,5 +49,7 @@ app.post('/options', optionsHandler);
 // Slack Incoming Events
 
 slackEvents.on('message', messageEvent);
+
+slackEvents.on('link_shared', linkEvent);
 
 slackEvents.on('error', errorEvent);
