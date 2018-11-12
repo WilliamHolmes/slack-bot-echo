@@ -1,10 +1,8 @@
-const interactiveMessage = require('./interactiveMessage');
-
 const queryStrings = require('query-string');
 
-const web = require('../webClient');
-
 const interactiveMessage = require('./interactiveMessage');
+
+const web = require('../webClient');
 
 const actions = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
