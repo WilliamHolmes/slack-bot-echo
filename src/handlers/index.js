@@ -1,9 +1,9 @@
 const actionsHandler = require('./actions');
-const slashCommandsHandler = require('./slashCommands');
+const commandsHandler = require('./commands');
 const optionsHandler = require('./options');
 
 module.exports = {
     actionsHandler,
-    optionsHandler,
-    slashCommandsHandler,
+    commandsHandler,
+    optionsHandler
 }

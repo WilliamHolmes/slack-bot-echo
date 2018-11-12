@@ -2,7 +2,7 @@ const queryStrings = require('query-string');
 
 const web = require('../webClient');
 
-const slashCommands = (req, res) => {
+const commands = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
     console.log('slashCommands -> body', body);
     const { user_id: user, channel_id: channel, text, trigger_id } = body;
@@ -237,4 +237,4 @@ const slashCommands = (req, res) => {
     }
 }
 
-module.exports = slashCommands;
+module.exports = commands;

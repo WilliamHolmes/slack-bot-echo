@@ -10,7 +10,7 @@ const constants = require('./src/constants');
 
 const { authRedirectHandler } = require('./src/auth');
 const { errorEvent, messageEvent } = require('./src/events');
-const { actionsHandler, optionsHandler, slashCommandsHandler } = require('./src/handlers');
+const { actionsHandler, optionsHandler, commandsHandler } = require('./src/handlers');
 const { verifySignatureMiddleware } = require('./src/middleware');
 
 const { PORT, SIGNING_SECRET } = process.env
@@ -42,7 +42,7 @@ app.get('/auth/redirect', authRedirectHandler);
 
 app.post('/actions', actionsHandler)
 
-app.post('/commands', slashCommandsHandler);
+app.post('/commands', commandsHandler);
 
 app.post('/options', optionsHandler);
 
