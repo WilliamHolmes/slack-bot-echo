@@ -1,5 +1,5 @@
-const interactiveMessage = require('./interactiveMessage');
+const interactiveMessages = require('./interactiveMessages');
 
 module.exports = {
-    interactiveMessage
+    interactiveMessages
 }
