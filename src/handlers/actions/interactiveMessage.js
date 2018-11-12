@@ -9,7 +9,7 @@ const interactiveMessage = (req, res) => {
     const { user: { id: userId }, channel: { id: channel }, message_ts: ts } = payload;
 
     const content = {
-      "text": "Now back in stock!:tada:",
+      "text": "Try out these buttons",
       "attachments": [
           {
             "title": "Feeback",

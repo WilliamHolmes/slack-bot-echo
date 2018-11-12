@@ -66,7 +66,7 @@ const commands = (req, res) => {
         case 'buttons': {
             web.chat.postMessage({
                 channel,
-                "text": "Now back in stock!:tada:",
+                "text": "Try out these buttons",
                 "attachments": [
                     {
                         "fallback": "Would you recommend it to customers?",
