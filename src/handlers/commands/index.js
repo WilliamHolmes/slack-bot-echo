@@ -7,6 +7,7 @@ const commands = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
     console.log('slashCommands -> body', body);
     const { user_id: user, channel_id: channel, text, trigger_id } = body;
+    console.log('TCL: commands -> text', text);
     switch(text) {
         case 'image': {
             web.chat.postMessage({
@@ -147,8 +148,8 @@ const commands = (req, res) => {
                         type: "select",
                         data_source: "users"
                     }, {
+                        label: "Channels",
                         name: "channels_list",
-                        text: "Which Team?",
                         type: "select",
                         data_source: "channels"
                     }]

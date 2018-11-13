@@ -1,5 +1,7 @@
-
 const isEmail = require('isemail');
+const queryStrings = require('query-string');
+
+const web = require('../../../webClient');
 
 const dialogSubmission = (req, res) => {
     const body = queryStrings.parse(req.body.toString());

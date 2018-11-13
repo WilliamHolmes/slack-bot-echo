@@ -8,7 +8,7 @@ const { createEventAdapter } = require('@slack/events-api');
 
 const constants = require('./src/constants');
 
-const { authRedirectHandler } = require('./src/auth');
+const { authRedirectHandler, oAuthRedirectHandler } = require('./src/auth');
 const { errorEvent, linkEvent, messageEvent } = require('./src/events');
 const { actionsHandler, optionsHandler, commandsHandler } = require('./src/handlers');
 const { verifySignatureMiddleware } = require('./src/middleware');
@@ -32,11 +32,7 @@ app.get('/test', (req, res) => {
     res.send(`OK - Server up and  Running '${req.url}'`);
 });
 
-app.get('/', (req, res) => {
-    const { APP_SCOPE: scope, CLIENT_ID: client_id } = process.env;
-    const query = queryStrings.stringify({ client_id, scope });
-    res.redirect(`${constants.server.OAUTH_AUTHORIZE}?${query}`);
-});
+app.get('/', oAuthRedirectHandler);
 
 app.get('/auth/redirect', authRedirectHandler);
 

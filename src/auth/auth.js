@@ -8,7 +8,7 @@ const authorizations = {
     [TEAM_ID]: OAUTH_TOKEN
 };
 
-const redirect = (req, res) => {
+const auth = (req, res) => {
     // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. If that code is not there, we respond with an error message
     const { query: { code } } = req;
     if (!code) {
@@ -33,4 +33,4 @@ const redirect = (req, res) => {
     }
 }
 
-module.exports = redirect;
+module.exports = auth;

@@ -6,7 +6,7 @@ const interactiveMessage = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
     console.log('Received ACTIONS CALLBACK', body);
     const payload = JSON.parse(body.payload);
-    const { user: { id: userId }, channel: { id: channel }, message_ts: ts } = payload;
+    const { channel: { id: channel }, message_ts: ts } = payload;
 
     const content = {
       "text": "Try out these buttons",

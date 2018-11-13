@@ -1,3 +1,7 @@
+const queryStrings = require('query-string');
+
+const web = require('../../../webClient');
+
 const dialogSuggestion = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
     const payload = JSON.parse(body.payload);
