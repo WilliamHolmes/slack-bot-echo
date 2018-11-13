@@ -1,13 +1,14 @@
 const dialogSuggestion = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
     const payload = JSON.parse(body.payload);
-    const { channel: { id: channel }, callback_id } = payload;
+    const { callback_id } = payload;
 
     console.log('dialogSuggestion -> callback_id', callback_id);
 
     switch(callback_id) {
-      default:
+      default: {
         res.send();
+      }
     }
   };
 

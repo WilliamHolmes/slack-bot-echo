@@ -10,7 +10,7 @@ const actions = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
     console.log('Received ACTIONS CALLBACK', body);
     const payload = JSON.parse(body.payload);
-    const { type, user: { id: user }, team: { id: team }, channel: { id: channel } } = payload;
+    const { type } = payload;
 
     switch(type) {
         case 'interactive_message': {

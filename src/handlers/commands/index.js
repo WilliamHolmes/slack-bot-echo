@@ -146,6 +146,11 @@ const commands = (req, res) => {
                         name: "manager",
                         type: "select",
                         data_source: "users"
+                    }, {
+                        name: "channels_list",
+                        text: "Which Team?",
+                        type: "select",
+                        data_source: "channels"
                     }]
                 }
             });
