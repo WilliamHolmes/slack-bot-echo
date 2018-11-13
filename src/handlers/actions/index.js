@@ -1,5 +1,6 @@
 const queryStrings = require('query-string');
 
+const { dialogSubmission, dialogSuggestion } = require('./dialogs');
 const interactiveMessage = require('./interactiveMessage');
 const messageAction = require('./messageAction');
 
@@ -18,27 +19,16 @@ const actions = (req, res) => {
         case 'message_action' : {
             return messageAction(req, res);
         }
-        default:
+        case 'dialog_suggestion': {
+            return dialogSuggestion(req, res);
+        }
+        case 'dialog_submission': {
+            return dialogSubmission(req, res);
+        }
+        default: {
+            res.send();
+        }
     }
-
-    const { submission: { email = '' } } = payload;
-
-    if (!email.includes('@')) {
-      return res.send({
-        errors: [{
-          name: 'email',
-          error: "Invalid Email Address - @"
-        }]
-      });
-    }
-
-    const text = 'Thanks for the dialog submission';
-
-    web.chat.postEphemeral({ user, channel, text }).then(slackResponse => {
-        console.log('Message sent: ' + slackResponse.ts);
-    }).catch(console.error);
-
-    res.send();
   };
 
   module.exports = actions;
