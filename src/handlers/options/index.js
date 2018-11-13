@@ -1,8 +1,6 @@
 const queryStrings = require('query-string');
 
-// const web = require('../../webClient');
-
-const dialogSuggestions = require('./dialogSuggestions')
+const dialogSuggestion = require('./dialogSuggestion')
 
 const options = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
@@ -11,7 +9,7 @@ const options = (req, res) => {
     const { type } = payload;
     switch(type) {
         case 'dialog_suggestion': {
-            return dialogSuggestions(req, res);
+            return dialogSuggestion(req, res);
         }
         default:
     }
