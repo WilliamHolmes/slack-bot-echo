@@ -29,7 +29,8 @@ const message = (...args) => {
 
   const promises = _.map(links, async ({ url }) => {
     const { body: html, url: link } = await got(url);
-    return { ...(await metascraper({ html, url: link })), url };
+    const data = await metascraper({ html, url: link });
+    return { ...data, url };
   });
 
   return Q.all(promises).then(data => {
