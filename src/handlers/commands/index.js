@@ -122,6 +122,7 @@ const commands = (req, res) => {
                     submit_label: "Send",
                     notify_on_cancel: false,
                     state: "Limo",
+                    // Max 5 elements
                     elements: [{
                         label: "Name",
                         name: "name",
@@ -147,11 +148,6 @@ const commands = (req, res) => {
                         name: "manager",
                         type: "select",
                         data_source: "users"
-                    }, {
-                        label: "Channels",
-                        name: "channels_list",
-                        type: "select",
-                        data_source: "channels"
                     }]
                 }
             });
