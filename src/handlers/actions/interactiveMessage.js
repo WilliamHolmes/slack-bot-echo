@@ -11,14 +11,15 @@ const interactiveMessage = (req, res) => {
     switch(callback_id) {
         case 'buttons_1234': {
             const { actions: [action], channel: { id: channel }, message_ts: ts } = payload;
-            const content = {
+            web.chat.update({
+                channel,
+                ts,
                 text: 'Try out these buttons',
                 attachments: [{
                     title: 'Feeback',
                     text : `Thanks for the Feeback <@UDW87UF6U>\n${JSON.stringify(action)}`
                 }]
-            }
-            web.chat.update({ channel, ts, ...content}).catch(console.error);
+            }).catch(console.error);
         }
         default: {
             res.send();
