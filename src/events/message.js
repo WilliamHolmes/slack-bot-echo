@@ -2,8 +2,7 @@ const _ = require('underscore');
 
 const web = require('../webClient');
 
-const message = (...args) => {
-  const [{ bot_id, channel, text }] = args;
+const message = ({ bot_id, channel, text }) => {
 
   if(_.isEqual(bot_id, 'BDX72S2JZ')) {
     console.log('IGNORE My Bot Message');
@@ -13,10 +12,8 @@ const message = (...args) => {
   console.log('MESSAGE Event', args);
 
   if (_.isEqual(text, 'echo')) {
-    web.chat.postMessage({ channel, text }).then(slackResponse => {
-      console.log('Message sent: ' + slackResponse.ts);
-    }).catch(console.error);
+    web.chat.postMessage({ channel, text }).catch(console.error);
   }
-  };
+};
 
   module.exports = message;

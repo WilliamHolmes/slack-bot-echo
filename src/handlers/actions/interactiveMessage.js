@@ -4,7 +4,7 @@ const web = require('../../webClient');
 
 const interactiveMessage = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
-    console.log('Received ACTIONS CALLBACK', body);
+    console.log('Received interactiveMessage', body);
     const payload = JSON.parse(body.payload);
     const { channel: { id: channel }, message_ts: ts } = payload;
 

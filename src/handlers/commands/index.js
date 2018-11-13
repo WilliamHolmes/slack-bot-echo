@@ -73,7 +73,7 @@ const commands = (req, res) => {
                     {
                         "fallback": "Would you recommend it to customers?",
                         "title": "Would you recommend it to customers?",
-                        "callback_id": "buttons_1234_xyz",
+                        "callback_id": "buttons_1234",
                         "color": "#3AA3E3",
                         "attachment_type": "default",
                         "actions": [
@@ -106,8 +106,6 @@ const commands = (req, res) => {
                         ]
                     }
                 ]
-            }).then(slackResponse => {
-                console.log('Message sent: ' + slackResponse.ts);
             }).catch(console.error);
 
             res.send();
