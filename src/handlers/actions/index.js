@@ -1,6 +1,7 @@
 const queryStrings = require('query-string');
 
 const interactiveMessage = require('./interactiveMessage');
+const messageAction = require('./messageAction');
 
 const web = require('../../webClient');
 
@@ -14,10 +15,13 @@ const actions = (req, res) => {
         case 'interactive_message': {
             return interactiveMessage(req, res);
         }
+        case 'message_action' : {
+            return messageAction(req, res);
+        }
         default:
     }
 
-    const { submission: { email } } = payload;
+    const { submission: { email = '' } } = payload;
 
     if (!email.includes('@')) {
       return res.send({
