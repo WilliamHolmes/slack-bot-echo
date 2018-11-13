@@ -11,22 +11,17 @@ const metascraper = require('metascraper')([
 
 const web = require('../webClient');
 
-const getAttachment = ({ title, description, image, url }) => ({
-  url,
-  title,
-  title_link: image,
-  thumb_url: image,
-  fields: [{
-    title: 'Description',
-    value: description
-  }]
-});
+const getAttachment = ({ title, description, image, url }) => {
+  let res = { url, title, title_link: image, thumb_url: image };
+  if (!_.isEmpty(description)) {
+    res.fields = [{ title: 'Description', value: description }]
+  }
+  return res;
+};
 
 const getUnfurls = (data) => _.chain(data).map(getAttachment).indexBy('url').value();
 
-const message = (...args) => {
-  const [{ channel, message_ts: ts, links = [] }] = args;
-
+const message = ({ channel, message_ts: ts, links = [] }) => {
   const promises = _.map(links, async ({ url }) => {
     const { body: html, url: link } = await got(url);
     const data = await metascraper({ html, url: link });
