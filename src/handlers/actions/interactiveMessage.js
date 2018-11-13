@@ -6,17 +6,24 @@ const interactiveMessage = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
     console.log('Received interactiveMessage', body);
     const payload = JSON.parse(body.payload);
-    const { channel: { id: channel }, message_ts: ts } = payload;
+    const { callback_id, channel: { id: channel }, message_ts: ts } = payload;
 
-    const content = {
-        text: 'Try out these buttons',
-        attachments: [{
-            title: 'Feeback',
-            text : 'Thanks for the Feeback <@UDW87UF6U>'
-        }]
+    switch(callback_id) {
+        case 'buttons_1234': {
+            const { actions: [action] } = payload;
+            const content = {
+                text: 'Try out these buttons',
+                attachments: [{
+                    title: 'Feeback',
+                    text : `Thanks for the Feeback <@UDW87UF6U>\n${JSON.stringify(action)}`
+                }]
+            }
+            web.chat.update({ channel, ts, ...content}).catch(console.error);
+        }
+        default: {
+            res.send();
+        }
     }
-
-    web.chat.update({ channel, ts, ...content}).catch(console.error);
 
     return res.send();
 }
