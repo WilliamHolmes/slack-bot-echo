@@ -2,11 +2,8 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser')
-const queryStrings = require('query-string');
 
 const { createEventAdapter } = require('@slack/events-api');
-
-const constants = require('./src/constants');
 
 const { authRedirectHandler, oAuthRedirectHandler } = require('./src/auth');
 const { errorEvent, linkEvent, messageEvent } = require('./src/events');
