@@ -12,6 +12,8 @@ const actions = (req, res) => {
     const payload = JSON.parse(body.payload);
     const { type } = payload;
 
+    console.log('TCL: actions -> type', type);
+
     switch(type) {
         case 'interactive_message': {
             return interactiveMessage(req, res);
