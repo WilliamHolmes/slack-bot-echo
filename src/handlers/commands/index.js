@@ -116,39 +116,39 @@ const commands = (req, res) => {
             web.dialog.open({
                 trigger_id,
                 dialog: {
-                  callback_id: 'dialog_job_role',
-                  title: 'My Ideal Job',
-                  submit_label: "Send",
-                  notify_on_cancel: false,
-                  state: "Limo",
-                  elements: [
-                    {
-                      label: "Some Text",
-                      name: "dialog_text",
-                      type: "text"
-                    },
-                    {
+                    callback_id: 'dialog_my_job',
+                    title: 'My Job Dialog',
+                    submit_label: "Send",
+                    notify_on_cancel: false,
+                    state: "Limo",
+                    elements: [{
+                        label: "Name",
+                        name: "name",
+                        type: "text"
+                    }, {
                         label: "Email Address",
                         name: "email",
                         placeholder: "you@example.com",
                         subtype: "email",
                         type: "text"
-                    },
-                    {
-                      "hint": "Provide additional information if needed.",
-                      "label": "Additional information",
-                      "name": "comment",
-                      "type": "textarea"
-                    },
-                    {
-                      "label": "Job Role",
-                      "name": "job_role",
-                      "type": "select",
-                      "data_source": "external"
-                    }
-                  ]
+                    }, {
+                        label: "Job Role",
+                        name: "role",
+                        type: "select",
+                        data_source: "external"
+                    }, {
+                        hint: "Job Description",
+                        label: "Additional information",
+                        name: "description",
+                        type: "textarea"
+                    }, {
+                        label: "Manager",
+                        name: "manager",
+                        type: "select",
+                        data_source: "users"
+                    }]
                 }
-              });
+            });
             res.send();
             break;
         }
