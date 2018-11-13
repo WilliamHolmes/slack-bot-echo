@@ -33,6 +33,7 @@
     "debug": "^4.1.0",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
+    "isemail": "^3.2.0",
     "metascraper": "^4.5.5",
     "metascraper-description": "^4.5.5",
     "metascraper-image": "^4.5.5",
