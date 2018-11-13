@@ -5,17 +5,16 @@ const web = require('../../webClient');
 const messageAction = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
     const payload = JSON.parse(body.payload);
-    const { calback_id } = payload;
+    const { channel: { id: channel }, callback_id } = payload;
 
-    switch(calback_id) {
+    switch(callback_id) {
       case 'echo_message': {
         const { message: { text } } = payload;
-        console.log('TCL: echoMessage -> text', text);
-        res.send({ text });
+        web.chat.postMessage({ channel, text }).catch(console.error);
       }
       default:
+        res.send();
     }
-
   };
 
   module.exports = messageAction;

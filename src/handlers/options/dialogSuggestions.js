@@ -2,28 +2,20 @@ const dialogSuggestions = (req, res) => {
     return res.send({
         "option_groups": [
         {
-          "label": "C",
+          "label": "A",
           "options": [
             {
-              "label": "Maru",
-              "value": "maru"
-            },
-            {
-              "label": "Lil Bub",
-              "value": "lilbub"
-            },
-            {
-              "label": "Hamilton the Hipster Cat",
-              "value": "hamilton"
+              "label": "Accountant",
+              "value": "accountant"
             }
           ]
         },
         {
-          "label": "D",
+          "label": "B",
           "options": [
             {
-              "label": "Boo the Pomeranian",
-              "value": "boo"
+              "label": "Barista",
+              "value": "barista"
             }
           ]
         }

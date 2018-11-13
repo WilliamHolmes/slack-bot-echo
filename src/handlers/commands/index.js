@@ -116,23 +116,23 @@ const commands = (req, res) => {
             web.dialog.open({
                 trigger_id,
                 dialog: {
-                  callback_id: 'some_callback_id',
-                  title: 'My First Dialog',
+                  callback_id: 'dialog_job_role',
+                  title: 'My Ideal Job',
                   submit_label: "Send",
                   notify_on_cancel: false,
                   state: "Limo",
                   elements: [
                     {
                       label: "Some Text",
-                      name: "loc_origin",
+                      name: "dialog_text",
                       type: "text"
                     },
                     {
-                      "label": "Email Address",
-                      "name": "email",
-                      "placeholder": "you@example.com",
-                      "subtype": "email",
-                      "type": "text"
+                        label: "Email Address",
+                        name: "email",
+                        placeholder: "you@example.com",
+                        subtype: "email",
+                        type: "text"
                     },
                     {
                       "hint": "Provide additional information if needed.",
@@ -141,22 +141,10 @@ const commands = (req, res) => {
                       "type": "textarea"
                     },
                     {
-                      "label": "Assignee",
-                      "name": "bug_assignee",
+                      "label": "Job Role",
+                      "name": "job_role",
                       "type": "select",
-                      "data_source": "users"
-                    },
-                    {
-                      "label": "Choose a meme",
-                      "name": "animal",
-                      "type": "select",
-                      "data_source": "external",
-                      "selected_options": [
-                        {
-                          "label": "[FE-459] Remove the marquee tag",
-                          "value": "FE-459"
-                        }
-                      ]
+                      "data_source": "external"
                     }
                   ]
                 }
