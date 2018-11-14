@@ -1,4 +1,7 @@
 const queryStrings = require('query-string');
+const _ = require('underscore');
+
+const web = require('../../../webClient');
 
 const snoozeSelection = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
@@ -6,6 +9,7 @@ const snoozeSelection = (req, res) => {
     const payload = JSON.parse(body.payload);
 
     const {
+        user: { id: userId },
         actions: [action],
         channel: { id: channel },
         message_ts: ts
@@ -32,6 +36,12 @@ const snoozeSelection = (req, res) => {
                         name: 'snooze_update',
                         value: 'snooze_update',
                         text: 'Change',
+                        type: 'button'
+                    }, {
+                        name: 'snooze_share',
+                        value: 'snooze_share',
+                        text: 'Share with Channel',
+                        style: 'primary',
                         type: 'button'
                     }]
                 }]
@@ -63,6 +73,22 @@ const snoozeSelection = (req, res) => {
                     }]
                 }]
             });
+        }
+        case 'snooze_share': {
+            const { selected_options: [{ value }] } = action;
+            return web.chat.postMessage({
+                channel,
+                text: '*Notifications* have been Snoozed',
+                attachments: [{
+                    attachment_type: 'default',
+                    text : `:calendar: muted until: *${value}*`,
+                    color: "#3AA3E3",
+                }, {
+                    footer: `shared by <@${userId}>`,
+                    footer_icon: 'https://platform.slack-edge.com/img/default_application_icon.png',
+                    ts: (_.now() / 1000)
+                }]
+            }).catch(console.error);
         }
         default:
           res.send();
