@@ -28,7 +28,7 @@ const interactiveMessage = (req, res) => {
                 }]
             }).catch(console.error);
         }
-        case 'game_selection': {
+        case 'snooze_selection': {
             if (_.isEqual(action.name, 'game_submit')) {
                 web.chat.update({
                     channel,

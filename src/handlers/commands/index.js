@@ -147,56 +147,26 @@ const commands = (req, res) => {
         case 'select': {
             web.chat.postMessage({
                 channel,
-                text: "Would you like to play a game?",
                 response_type: "in_channel",
                 attachments: [{
-                    text: "Choose a game to play",
-                    fallback: "If you could read this message, you'd be choosing something fun to do right now.",
+                    text: "Snooze *Notifications* for how long?",
                     color: "#3AA3E3",
                     attachment_type: "default",
-                    callback_id: "game_selection",
+                    callback_id: "snooze_selection",
                     actions: [{
-                        name: "games_list",
-                        text: "Pick a game...",
+                        name: "snooze_until",
+                        text: "Snooze until...",
                         type: "select",
                         options: [{
-                            text: "Hearts",
-                            value: "hearts"
+                            text: "Tomorrow",
+                            value: "tomorrow"
                         }, {
-                            text: "Bridge",
-                            value: "bridge"
+                            text: "Next Week",
+                            value: "next_week"
                         }, {
-                            text: "Checkers",
-                            value: "checkers"
-                        }, {
-                            text: "Chess",
-                            value: "chess"
-                        }, {
-                            text: "Poker",
-                            value: "poker"
-                        }, {
-                            text: "Falken's Maze",
-                            value: "maze"
-                        }, {
-                            text: "Global Thermonuclear War",
-                            value: "war"
+                            text: "Next Month",
+                            value: "next_month"
                         }]
-                    }, {
-                        name: "channels_list",
-                        text: "Which channel?",
-                        type: "select",
-                        data_source: "channels"
-                    }, {
-                        name: "winners_list",
-                        text: "Who should win?",
-                        type: "select",
-                        data_source: "users"
-                    }, {
-                        name: 'game_submit',
-                        value: 'submit',
-                        style: 'primary',
-                        text: 'Submit',
-                        type: 'button'
                     }]
                 }]
               });
