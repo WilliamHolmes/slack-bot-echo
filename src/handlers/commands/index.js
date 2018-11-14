@@ -71,7 +71,7 @@ const commands = (req, res) => {
                 text: 'Try out these buttons',
                 attachments: [{
                     title: 'Would you recommend the Slack API?',
-                    callback_id: 'buttons_1234',
+                    callback_id: 'try_buttons',
                     color: '#3AA3E3',
                     attachment_type: 'default',
                     actions: [{
