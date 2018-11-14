@@ -9,24 +9,23 @@ const dialogSuggestions = (req, res) => {
 
   switch(callback_id) {
     case 'dialog_my_job': {
-      const { name, value } = payload;
+      const { name, value = '' } = payload;
       if (_.isEqual(name, 'role')) {
         console.log(`You Could Filter on ${value}`);
-        return res.send({
-          option_groups: [{
-            label: "A",
+        const option_groups = _.filter([{
+            label: 'A',
             options: [{
-              label: "Accountant",
-              value: "accountant"
+              label: 'Accountant',
+              value: 'accountant'
             }]
           }, {
-            label: "B",
+            label: 'B',
             options: [{
-              label: "Barista",
-              value: "barista"
+              label: 'Barista',
+              value: 'barista'
             }]
-          }]
-        });
+          }], ({ label }) => (label.toLocaleLowerCase() === value.toLocaleLowerCase()));
+        return res.send({ option_groups  });
       }
     }
     default: {

@@ -21,6 +21,9 @@ const interactiveMessage = (req, res) => {
                 }]
             }).catch(console.error);
         }
+        case 'game_selection': {
+            const { actions: [action], channel: { id: channel }, message_ts: ts } = payload;
+        }
         default: {
             res.send();
         }

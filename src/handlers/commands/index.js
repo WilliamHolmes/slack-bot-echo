@@ -12,11 +12,11 @@ const commands = (req, res) => {
         case 'image': {
             web.chat.postMessage({
                 channel,
-                "attachments": [{
-                    "title": "Adding an Image",
-                    "author_name": "William Holmes",
-                    "author_icon": "https://api.watsonwork.ibm.com/photos/e8e73f40-ba74-102b-8a1d-c574ebd76cf3?modifiedToken=2018-09-03T13:03:38.059+0000",
-                    "image_url": "http://i.imgur.com/OJkaVOI.jpg?1"
+                attachments: [{
+                    title: "Adding an Image",
+                    author_name: "William Holmes",
+                    author_icon: "https://api.watsonwork.ibm.com/photos/e8e73f40-ba74-102b-8a1d-c574ebd76cf3?modifiedToken=2018-09-03T13:03:38.059+0000",
+                    image_url: "http://i.imgur.com/OJkaVOI.jpg?1"
                 }]
             });
             res.send();
@@ -25,18 +25,18 @@ const commands = (req, res) => {
         case 'fields': {
             web.chat.postMessage({
                 channel,
-                "attachments": [{
-                    "title": "Adding Fields",
-                    "fields": [
+                attachments: [{
+                    title: "Adding Fields",
+                    fields: [
                         {
-                            "title": "Field 1",
-                            "value": "Value 1",
-                            "short": true
+                            title: "Field 1",
+                            value: "Value 1",
+                            short: true
                         },
                         {
-                            "title": "Field 2",
-                            "value": "value 2",
-                            "short": true
+                            title: "Field 2",
+                            value: "value 2",
+                            short: true
                         }
                     ]
                 }]
@@ -48,7 +48,7 @@ const commands = (req, res) => {
             web.chat.postEphemeral({
                 user,
                 channel,
-                "text": "This message is only for you"
+                text: "This message is only for you"
             });
             res.send();
             break;
@@ -56,10 +56,10 @@ const commands = (req, res) => {
         case 'text': {
             web.chat.postMessage({
                 channel,
-                "text": "This is some text with an attachment",
-                "attachments": [{
-                    "title": "Adding attachment Text with a Title",
-                    "text": "*bold* `code` _italic_ ~strike~ :smile:"
+                text: "This is some text with an attachment",
+                attachments: [{
+                    title: "Adding attachment Text with a Title",
+                    text: "*bold* `code` _italic_ ~strike~ :smile:"
                 }]
             });
             res.send();
@@ -68,46 +68,38 @@ const commands = (req, res) => {
         case 'buttons': {
             web.chat.postMessage({
                 channel,
-                "text": "Try out these buttons",
-                "attachments": [
-                    {
-                        "fallback": "Would you recommend it to customers?",
-                        "title": "Would you recommend it to customers?",
-                        "callback_id": "buttons_1234",
-                        "color": "#3AA3E3",
-                        "attachment_type": "default",
-                        "actions": [
-                            {
-                                "name": "decision",
-                                "value": "orbit",
-                                "style": "primary",
-                                "text": "Orbit",
-                                "type": "button"
-                            },
-                            {
-                                "name": "decision",
-                                "value": "land",
-                                "text": "Attempt to land",
-                                "type": "button"
-                            },
-                            {
-                                "name": "decision",
-                                "value": "self_destruct",
-                                "text": "Self destruct",
-                                "type": "button",
-                                "style": "danger",
-                                "confirm": {
-                                    "title": "Are you sure you want to self destruct?",
-                                    "text": "Maybe you should attempt to land instead. You might crash.",
-                                    "ok_text": "Yes, self destruct",
-                                    "dismiss_text": "No thanks"
-                                }
-                            }
-                        ]
-                    }
-                ]
+                text: 'Try out these buttons',
+                attachments: [{
+                    title: 'Would you recommend the Slack API?',
+                    callback_id: 'buttons_1234',
+                    color: '#3AA3E3',
+                    attachment_type: 'default',
+                    actions: [{
+                        name: 'decision',
+                        value: 'yes',
+                        style: 'primary',
+                        text: 'Yes',
+                        type: 'button'
+                    }, {
+                        name: 'decision',
+                        value: 'maybe',
+                        text: 'Maybe',
+                        type: 'button'
+                    }, {
+                        name: 'decision',
+                        value: 'no',
+                        text: 'No Way!',
+                        type: 'button',
+                        style: 'danger',
+                        confirm: {
+                            title: 'Are you sure you?',
+                            text: 'Maybe you should read the API docs some more.',
+                            ok_text: 'Yes, im sure',
+                            dismiss_text: 'No, i\'ll take another look'
+                        }
+                    }]
+                }]
             }).catch(console.error);
-
             res.send();
             break;
         }
@@ -155,60 +147,60 @@ const commands = (req, res) => {
         case 'select': {
             web.chat.postMessage({
                 channel,
-                "text": "Would you like to play a game?",
-                "response_type": "in_channel",
-                "attachments": [
+                text: "Would you like to play a game?",
+                response_type: "in_channel",
+                attachments: [
                     {
-                        "text": "Choose a game to play",
-                        "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
-                        "color": "#3AA3E3",
-                        "attachment_type": "default",
-                        "callback_id": "game_selection",
-                        "actions": [
+                        text: "Choose a game to play",
+                        fallback: "If you could read this message, you'd be choosing something fun to do right now.",
+                        color: "#3AA3E3",
+                        attachment_type: "default",
+                        callback_id: "game_selection",
+                        actions: [
                             {
-                                "name": "games_list",
-                                "text": "Pick a game...",
-                                "type": "select",
-                                "options": [
+                                name: "games_list",
+                                text: "Pick a game...",
+                                type: "select",
+                                options: [
                                     {
-                                        "text": "Hearts",
-                                        "value": "hearts"
+                                        text: "Hearts",
+                                        value: "hearts"
                                     },
                                     {
-                                        "text": "Bridge",
-                                        "value": "bridge"
+                                        text: "Bridge",
+                                        value: "bridge"
                                     },
                                     {
-                                        "text": "Checkers",
-                                        "value": "checkers"
+                                        text: "Checkers",
+                                        value: "checkers"
                                     },
                                     {
-                                        "text": "Chess",
-                                        "value": "chess"
+                                        text: "Chess",
+                                        value: "chess"
                                     },
                                     {
-                                        "text": "Poker",
-                                        "value": "poker"
+                                        text: "Poker",
+                                        value: "poker"
                                     },
                                     {
-                                        "text": "Falken's Maze",
-                                        "value": "maze"
+                                        text: "Falken's Maze",
+                                        value: "maze"
                                     },
                                     {
-                                        "text": "Global Thermonuclear War",
-                                        "value": "war"
+                                        text: "Global Thermonuclear War",
+                                        value: "war"
                                     }
                                 ]
                             },                {
-                              "name": "channels_list",
-                              "text": "Which channel?",
-                              "type": "select",
-                              "data_source": "channels"
+                              name: "channels_list",
+                              text: "Which channel?",
+                              type: "select",
+                              data_source: "channels"
                           },                {
-                            "name": "winners_list",
-                            "text": "Who should win?",
-                            "type": "select",
-                            "data_source": "users"
+                            name: "winners_list",
+                            text: "Who should win?",
+                            type: "select",
+                            data_source: "users"
                         }
                         ]
                     }
@@ -238,15 +230,15 @@ const commands = (req, res) => {
             res.send({
                 text: 'Here is *MAIN* message some text that appears above an attachment',
                 attachments: [{
-                    "author_name": "William Holmes",
-                    "author_link": "https://workspace-slack-test.slack.com/messages/DDYC9EDN2/team/UDW87UF6U/",
-                    "author_icon": "https://ca.slack-edge.com/TDY214B3R-UDW87UF6U-932c98831585-72",
-                    "title": "App Code Repo",
-                    "title_link": "https://glitch.com/edit/#!/husky-pendulum",
-                    "text": "Optional text that appears within the attachment",
-                    "footer": "Our Test APP",
-                    "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
-                    "ts": (_.now() / 1000)
+                    author_name: "William Holmes",
+                    author_link: "https://workspace-slack-test.slack.com/messages/DDYC9EDN2/team/UDW87UF6U/",
+                    author_icon: "https://ca.slack-edge.com/TDY214B3R-UDW87UF6U-932c98831585-72",
+                    title: "App Code Repo",
+                    title_link: "https://glitch.com/edit/#!/husky-pendulum",
+                    text: "Optional text that appears within the attachment",
+                    footer: "Our Test APP",
+                    footer_icon: "https://platform.slack-edge.com/img/default_application_icon.png",
+                    ts: (_.now() / 1000)
                 }]
             })
             break;
