@@ -17,7 +17,6 @@ const dialogSuggestions = (req, res) => {
     case 'dialog_my_job': {
       const { name, value = '' } = payload;
       if (_.isEqual(name, 'role')) {
-        console.log(`You Could Filter on ${value}`);
         const option_groups = filterOptions([{
             label: 'A',
             options: [{

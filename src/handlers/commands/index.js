@@ -159,13 +159,13 @@ const commands = (req, res) => {
                         type: "select",
                         options: [{
                             text: "Tomorrow",
-                            value: "tomorrow"
+                            value: "Tomorrow"
                         }, {
                             text: "Next Week",
-                            value: "next_week"
+                            value: "Next Week"
                         }, {
                             text: "Next Month",
-                            value: "next_month"
+                            value: "Next Month"
                         }]
                     }]
                 }]

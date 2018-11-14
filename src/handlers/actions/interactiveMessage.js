@@ -29,14 +29,15 @@ const interactiveMessage = (req, res) => {
             }).catch(console.error);
         }
         case 'snooze_selection': {
-            if (_.isEqual(action.name, 'game_submit')) {
+            if (_.isEqual(action.name, 'snooze_until')) {
+                const { selected_options: [{ value }] } = action
                 web.chat.update({
                     channel,
                     ts,
-                    text: 'Would you like to play a game?',
+                    // text: 'Would you like to play a game?',
                     attachments: [{
-                        title: 'Feeback',
-                        text : `Thanks for the Feeback <@${userId}>\n${JSON.stringify(action)}`
+                        title: 'Notifications',
+                        text : `Muted until: *${value}*`
                     }]
                 }).catch(console.error);
             }
