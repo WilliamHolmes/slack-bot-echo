@@ -1,8 +1,6 @@
 const _ = require('underscore');
 const queryStrings = require('query-string');
 
-const web = require('../../webClient');
-
 const { snoozeSelection, tryButtons } = require('./interactive')
 
 const interactiveMessage = (req, res) => {
@@ -10,24 +8,20 @@ const interactiveMessage = (req, res) => {
     console.log('Received interactiveMessage body', body);
     const payload = JSON.parse(body.payload);
 
-    const {
-        user: { id: userId },
-        callback_id ,
-        actions: [action],
-        channel: { id: channel },
-        message_ts: ts
-    } = payload;
+    const { callback_id } = payload;
+
+    res.send();
 
     switch(callback_id) {
         case 'try_buttons': {
             tryButtons(req, res);
+            break;
         }
         case 'snooze_selection': {
             snoozeSelection(req, res);
+            break;
         }
-        default: {
-            res.send();
-        }
+        default:
     }
 }
 

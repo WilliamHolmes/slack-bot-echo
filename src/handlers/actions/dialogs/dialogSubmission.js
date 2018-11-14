@@ -10,6 +10,8 @@ const dialogSubmission = (req, res) => {
 
     console.log('TCL: dialogSubmission -> callback_id', callback_id);
 
+    res.send();
+
     switch(callback_id) {
       case 'dialog_my_job': {
         const { channel: { id: channel }, user: { id: user }, submission: { email = '' }, submission } = payload;
@@ -22,9 +24,9 @@ const dialogSubmission = (req, res) => {
           });
         }
         web.chat.postEphemeral({ user, channel, text: JSON.stringify(submission) }).catch(console.error);
+        break;
       }
       default:
-        res.send();
     }
   };
 

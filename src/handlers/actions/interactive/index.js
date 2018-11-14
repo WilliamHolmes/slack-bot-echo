@@ -1,4 +1,4 @@
-const snoozeSelect = require('snoozeSelection');
+const snoozeSelection = require('snoozeSelection');
 const tryButtons = require('tryButtons');
 
 module.exports = {

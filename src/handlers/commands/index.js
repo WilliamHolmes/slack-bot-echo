@@ -149,7 +149,7 @@ const commands = (req, res) => {
                 channel,
                 response_type: "in_channel",
                 attachments: [{
-                    text: "Snooze *Notifications* for how long?",
+                    text: "Snooze *Notifications* for how long? 1",
                     color: "#3AA3E3",
                     attachment_type: "default",
                     callback_id: "snooze_selection",
@@ -162,10 +162,10 @@ const commands = (req, res) => {
                             value: "Tomorrow"
                         }, {
                             text: "Next Week",
-                            value: "Next Week"
+                            value: "Next_Week"
                         }, {
                             text: "Next Month",
-                            value: "Next Month"
+                            value: "Next_Month"
                         }]
                     }]
                 }]

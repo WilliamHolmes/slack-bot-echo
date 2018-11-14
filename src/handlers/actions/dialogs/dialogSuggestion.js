@@ -1,7 +1,5 @@
 const queryStrings = require('query-string');
 
-const web = require('../../../webClient');
-
 const dialogSuggestion = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
     const payload = JSON.parse(body.payload);
@@ -9,10 +7,10 @@ const dialogSuggestion = (req, res) => {
 
     console.log('dialogSuggestion -> callback_id', callback_id);
 
+    res.send();
+
     switch(callback_id) {
-      default: {
-        res.send();
-      }
+      default:
     }
   };
 
