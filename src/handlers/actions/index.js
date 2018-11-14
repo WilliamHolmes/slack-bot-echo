@@ -4,8 +4,6 @@ const { dialogSubmission, dialogSuggestion } = require('./dialogs');
 const interactiveMessage = require('./interactiveMessage');
 const messageAction = require('./messageAction');
 
-const web = require('../../webClient');
-
 const actions = (req, res) => {
     const body = queryStrings.parse(req.body.toString());
     console.log('Received ACTIONS CALLBACK', body);

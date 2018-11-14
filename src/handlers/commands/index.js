@@ -149,63 +149,57 @@ const commands = (req, res) => {
                 channel,
                 text: "Would you like to play a game?",
                 response_type: "in_channel",
-                attachments: [
-                    {
-                        text: "Choose a game to play",
-                        fallback: "If you could read this message, you'd be choosing something fun to do right now.",
-                        color: "#3AA3E3",
-                        attachment_type: "default",
-                        callback_id: "game_selection",
-                        actions: [
-                            {
-                                name: "games_list",
-                                text: "Pick a game...",
-                                type: "select",
-                                options: [
-                                    {
-                                        text: "Hearts",
-                                        value: "hearts"
-                                    },
-                                    {
-                                        text: "Bridge",
-                                        value: "bridge"
-                                    },
-                                    {
-                                        text: "Checkers",
-                                        value: "checkers"
-                                    },
-                                    {
-                                        text: "Chess",
-                                        value: "chess"
-                                    },
-                                    {
-                                        text: "Poker",
-                                        value: "poker"
-                                    },
-                                    {
-                                        text: "Falken's Maze",
-                                        value: "maze"
-                                    },
-                                    {
-                                        text: "Global Thermonuclear War",
-                                        value: "war"
-                                    }
-                                ]
-                            },                {
-                              name: "channels_list",
-                              text: "Which channel?",
-                              type: "select",
-                              data_source: "channels"
-                          },                {
-                            name: "winners_list",
-                            text: "Who should win?",
-                            type: "select",
-                            data_source: "users"
-                        }
-                        ]
-                    }
-                ]
-              })
+                attachments: [{
+                    text: "Choose a game to play",
+                    fallback: "If you could read this message, you'd be choosing something fun to do right now.",
+                    color: "#3AA3E3",
+                    attachment_type: "default",
+                    callback_id: "game_selection",
+                    actions: [{
+                        name: "games_list",
+                        text: "Pick a game...",
+                        type: "select",
+                        options: [{
+                            text: "Hearts",
+                            value: "hearts"
+                        }, {
+                            text: "Bridge",
+                            value: "bridge"
+                        }, {
+                            text: "Checkers",
+                            value: "checkers"
+                        }, {
+                            text: "Chess",
+                            value: "chess"
+                        }, {
+                            text: "Poker",
+                            value: "poker"
+                        }, {
+                            text: "Falken's Maze",
+                            value: "maze"
+                        }, {
+                            text: "Global Thermonuclear War",
+                            value: "war"
+                        }]
+                    }, {
+                        name: "channels_list",
+                        text: "Which channel?",
+                        type: "select",
+                        data_source: "channels"
+                    }, {
+                        name: "winners_list",
+                        text: "Who should win?",
+                        type: "select",
+                        data_source: "users"
+                    }, {
+                        name: 'game_submit',
+                        value: 'submit',
+                        style: 'primary',
+                        text: 'Submit',
+                        type: 'button'
+                    }]
+                }]
+              });
             res.send();
             break;
         }
