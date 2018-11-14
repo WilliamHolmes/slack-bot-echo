@@ -10,8 +10,6 @@ const interactiveMessage = (req, res) => {
 
     const { callback_id } = payload;
 
-    res.send();
-
     switch(callback_id) {
         case 'try_buttons': {
             tryButtons(req, res);

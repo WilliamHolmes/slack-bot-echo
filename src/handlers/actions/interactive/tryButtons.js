@@ -14,7 +14,7 @@ const buttonsTest = (req, res) => {
         message_ts: ts
     } = payload;
 
-    web.chat.update({
+    res.send({
         channel,
         ts,
         text: 'Try out these buttons',
