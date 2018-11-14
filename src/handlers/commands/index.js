@@ -13,10 +13,10 @@ const commands = (req, res) => {
             web.chat.postMessage({
                 channel,
                 attachments: [{
-                    title: "Adding an Image",
-                    author_name: "William Holmes",
-                    author_icon: "https://api.watsonwork.ibm.com/photos/e8e73f40-ba74-102b-8a1d-c574ebd76cf3?modifiedToken=2018-09-03T13:03:38.059+0000",
-                    image_url: "http://i.imgur.com/OJkaVOI.jpg?1"
+                    title: 'Adding an Image',
+                    author_name: 'William Holmes',
+                    author_icon: 'https://api.watsonwork.ibm.com/photos/e8e73f40-ba74-102b-8a1d-c574ebd76cf3?modifiedToken=2018-09-03T13:03:38.059+0000',
+                    image_url: 'http://i.imgur.com/OJkaVOI.jpg?1'
                 }]
             });
             res.send();
@@ -26,16 +26,16 @@ const commands = (req, res) => {
             web.chat.postMessage({
                 channel,
                 attachments: [{
-                    title: "Adding Fields",
+                    title: 'Adding Fields',
                     fields: [
                         {
-                            title: "Field 1",
-                            value: "Value 1",
+                            title: 'Field 1',
+                            value: 'Value 1',
                             short: true
                         },
                         {
-                            title: "Field 2",
-                            value: "value 2",
+                            title: 'Field 2',
+                            value: 'value 2',
                             short: true
                         }
                     ]
@@ -48,7 +48,7 @@ const commands = (req, res) => {
             web.chat.postEphemeral({
                 user,
                 channel,
-                text: "This message is only for you"
+                text: 'This message is only for you'
             });
             res.send();
             break;
@@ -56,10 +56,10 @@ const commands = (req, res) => {
         case 'text': {
             web.chat.postMessage({
                 channel,
-                text: "This is some text with an attachment",
+                text: 'This is some text with an attachment',
                 attachments: [{
-                    title: "Adding attachment Text with a Title",
-                    text: "*bold* `code` _italic_ ~strike~ :smile:"
+                    title: 'Adding attachment Text with a Title',
+                    text: '*bold* `code` _italic_ ~strike~ :smile:'
                 }]
             });
             res.send();
@@ -109,35 +109,35 @@ const commands = (req, res) => {
                 dialog: {
                     callback_id: 'dialog_my_job',
                     title: 'My Job Dialog',
-                    submit_label: "Send",
+                    submit_label: 'Send',
                     notify_on_cancel: false,
-                    state: "Limo",
+                    state: 'Limo',
                     // Max 5 elements
                     elements: [{
-                        label: "Name",
-                        name: "name",
-                        type: "text"
+                        label: 'Name',
+                        name: 'name',
+                        type: 'text'
                     }, {
-                        label: "Email Address",
-                        name: "email",
-                        placeholder: "you@example.com",
-                        subtype: "email",
-                        type: "text"
+                        label: 'Email Address',
+                        name: 'email',
+                        placeholder: 'you@example.com',
+                        subtype: 'email',
+                        type: 'text'
                     }, {
-                        label: "Job Role",
-                        name: "role",
-                        type: "select",
-                        data_source: "external"
+                        label: 'Job Role',
+                        name: 'role',
+                        type: 'select',
+                        data_source: 'external'
                     }, {
-                        hint: "Job Description",
-                        label: "Additional information",
-                        name: "description",
-                        type: "textarea"
+                        hint: 'Job Description',
+                        label: 'Additional information',
+                        name: 'description',
+                        type: 'textarea'
                     }, {
-                        label: "Manager",
-                        name: "manager",
-                        type: "select",
-                        data_source: "users"
+                        label: 'Manager',
+                        name: 'manager',
+                        type: 'select',
+                        data_source: 'users'
                     }]
                 }
             });
@@ -147,25 +147,25 @@ const commands = (req, res) => {
         case 'select': {
             web.chat.postMessage({
                 channel,
-                response_type: "in_channel",
+                response_type: 'in_channel',
                 attachments: [{
-                    text: "Snooze *Notifications* for how long? 1",
-                    color: "#3AA3E3",
-                    attachment_type: "default",
-                    callback_id: "snooze_selection",
+                    text: 'Snooze *Notifications* for how long?',
+                    color: '#3AA3E3',
+                    attachment_type: 'default',
+                    callback_id: 'snooze_selection',
                     actions: [{
-                        name: "snooze_until",
-                        text: "Snooze until...",
-                        type: "select",
+                        name: 'snooze_until',
+                        text: 'Snooze until...',
+                        type: 'select',
                         options: [{
-                            text: "Tomorrow",
-                            value: "Tomorrow"
+                            text: 'Tomorrow',
+                            value: 'Tomorrow'
                         }, {
-                            text: "Next Week",
-                            value: "Next_Week"
+                            text: 'Next Week',
+                            value: 'Next_Week'
                         }, {
-                            text: "Next Month",
-                            value: "Next_Month"
+                            text: 'Next Month',
+                            value: 'Next_Month'
                         }]
                     }]
                 }]
@@ -194,14 +194,14 @@ const commands = (req, res) => {
             res.send({
                 text: 'Here is *MAIN* message some text that appears above an attachment',
                 attachments: [{
-                    author_name: "William Holmes",
-                    author_link: "https://workspace-slack-test.slack.com/messages/DDYC9EDN2/team/UDW87UF6U/",
-                    author_icon: "https://ca.slack-edge.com/TDY214B3R-UDW87UF6U-932c98831585-72",
-                    title: "App Code Repo",
-                    title_link: "https://glitch.com/edit/#!/husky-pendulum",
-                    text: "Optional text that appears within the attachment",
-                    footer: "Our Test APP",
-                    footer_icon: "https://platform.slack-edge.com/img/default_application_icon.png",
+                    author_name: 'William Holmes',
+                    author_link: 'https://workspace-slack-test.slack.com/messages/DDYC9EDN2/team/UDW87UF6U/',
+                    author_icon: 'https://ca.slack-edge.com/TDY214B3R-UDW87UF6U-932c98831585-72',
+                    title: 'App Code Repo',
+                    title_link: 'https://glitch.com/edit/#!/husky-pendulum',
+                    text: 'Optional text that appears within the attachment',
+                    footer: 'Our Test APP',
+                    footer_icon: 'https://platform.slack-edge.com/img/default_application_icon.png',
                     ts: (_.now() / 1000)
                 }]
             })
