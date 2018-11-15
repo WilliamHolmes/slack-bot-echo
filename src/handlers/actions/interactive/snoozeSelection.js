@@ -27,14 +27,12 @@ const snoozeSelection = (req, res) => {
                 channel,
                 ts,
                 text: 'Snooze *Notifications* for how long?',
-                state: value,
                 attachments: [{
                     attachment_type: 'default',
                     callback_id: 'snooze_selection',
                     title: 'Notifications',
                     text : `:calendar: muted until: *${value}*`,
-                    color: "#3AA3E3",
-                    state: value,
+                    color: '#3AA3E3',
                     actions: [{
                         name: 'snooze_update',
                         value: 'snooze_update',
@@ -42,7 +40,7 @@ const snoozeSelection = (req, res) => {
                         type: 'button'
                     }, {
                         name: 'snooze_share',
-                        value: 'snooze_share',
+                        value: `${value}`,
                         text: 'Share with Channel',
                         style: 'primary',
                         type: 'button'
@@ -78,12 +76,13 @@ const snoozeSelection = (req, res) => {
             });
         }
         case 'snooze_share': {
+            const { value } = action;
             web.chat.postMessage({
                 channel,
                 text: '*Notifications* have been Snoozed',
                 attachments: [{
                     attachment_type: 'default',
-                    text : `:calendar: muted until: *${state}*`,
+                    text : `:calendar: muted until: *${value}*`,
                     color: "#3AA3E3",
                 }, {
                     footer: `shared by <@${userId}>`,
