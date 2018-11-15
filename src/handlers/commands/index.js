@@ -146,6 +146,7 @@ const commands = (req, res) => {
         }
         case 'select': {
             web.chat.postEphemeral({
+                user,
                 channel,
                 response_type: 'in_channel',
                 attachments: [{

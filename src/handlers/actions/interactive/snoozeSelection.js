@@ -34,6 +34,7 @@ const snoozeSelection = (req, res) => {
                     title: 'Notifications',
                     text : `:calendar: muted until: *${value}*`,
                     color: "#3AA3E3",
+                    state: value,
                     actions: [{
                         name: 'snooze_update',
                         value: 'snooze_update',
@@ -77,7 +78,7 @@ const snoozeSelection = (req, res) => {
             });
         }
         case 'snooze_share': {
-            return web.chat.postMessage({
+            web.chat.postMessage({
                 channel,
                 text: '*Notifications* have been Snoozed',
                 attachments: [{
