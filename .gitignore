@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 
 *.ignore
+*.ignore.*
 
 # Runtime data
 pids
